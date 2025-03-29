@@ -51,11 +51,11 @@ export default function MarketplacePage() {
                   Seller: {listing.seller}
                 </p>
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-blue-400">
+                  <span className="text-2xl font-bold text-orange-400">
                     {listing.price} ETH
                   </span>
                   <button
-                    className="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-md font-medium transition-colors"
+                    className="bg-orange-600 hover:bg-orange-700 px-6 py-2 rounded-md font-medium transition-colors"
                     onClick={() => console.log('Buy NFT:', listing.id)}
                   >
                     Buy Now

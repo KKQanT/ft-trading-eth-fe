@@ -32,7 +32,7 @@ export default function MintPage() {
               type="text"
               value={tokenURI}
               onChange={(e) => setTokenURI(e.target.value)}
-              className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
               placeholder="https://your-token-uri.json"
             />
           </div>
@@ -43,7 +43,7 @@ export default function MintPage() {
             className={`w-full py-3 px-4 rounded-md font-medium transition-colors
               ${isLoading || !tokenURI
                 ? 'bg-gray-600 cursor-not-allowed'
-                : 'bg-blue-600 hover:bg-blue-700'}`}
+                : 'bg-orange-600 hover:bg-orange-700'}`}
           >
             {isLoading ? 'Minting...' : 'Mint NFT'}
           </button>
