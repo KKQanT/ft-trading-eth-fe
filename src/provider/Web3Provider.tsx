@@ -14,7 +14,9 @@ const config = createConfig({
   connectors: [
     injected(),
     metaMask(),
-    walletConnect({  projectId: PROJECT_ID ?? "" }),
+    walletConnect({  
+      projectId: PROJECT_ID ?? "" ,
+    }),
   ],
   transports: {
     [sepolia.id]: http(),
