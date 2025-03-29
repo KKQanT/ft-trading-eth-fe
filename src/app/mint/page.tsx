@@ -1,20 +1,23 @@
 'use client';
 
 import { useState } from 'react';
+import { toast } from 'react-hot-toast';
+import { useNFTContract } from '@/hooks/useNFTContract';
 
 export default function MintPage() {
   const [tokenURI, setTokenURI] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
+  const { mintNFT, isLoading, error } = useNFTContract();
 
   const handleMint = async () => {
-    setIsLoading(true);
-    try {
-      // Minting logic will be implemented later
-      console.log('Minting NFT with URI:', tokenURI);
-    } catch (error) {
-      console.error('Error minting NFT:', error);
-    } finally {
-      setIsLoading(false);
+    if (!tokenURI) return;
+    
+    setSuccessMessage('');
+    const success = await mintNFT(tokenURI);
+    
+    if (success) {
+      setSuccessMessage('NFT minted successfully!');
+      setTokenURI('');
     }
   };
 
@@ -34,8 +37,21 @@ export default function MintPage() {
               onChange={(e) => setTokenURI(e.target.value)}
               className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
               placeholder="https://your-token-uri.json"
+              disabled={isLoading}
             />
           </div>
+
+          {error && (
+            <div className="mb-4 p-3 bg-red-900/50 text-red-200 rounded-md">
+              {error}
+            </div>
+          )}
+
+          {successMessage && (
+            <div className="mb-4 p-3 bg-green-900/50 text-green-200 rounded-md">
+              {successMessage}
+            </div>
+          )}
 
           <button
             onClick={handleMint}
